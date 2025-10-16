@@ -1,0 +1,25 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+
+#counter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* #admin{
+
+  width:"100vw";
+  height:"500vh";
+  background-color: bisque;
+  border: 2px solid black;
+  border-radius: 2%;
+  display: flex;
+  flex-direction: column;
+} */
