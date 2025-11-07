@@ -15,7 +15,7 @@ import { ShowList } from "./ShowList";
     function handleSubmit(){
     setTask((prev)=>[...prev,text])
     setText(" ");
-    <ShowList/>
+
 
     }
    
