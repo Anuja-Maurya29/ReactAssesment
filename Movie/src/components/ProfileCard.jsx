@@ -1,10 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { removeFavourite } from '../features/movies/moviesSlice';
+import { removeFavourite, removeWatchNext } from '../features/movies/moviesSlice';
 
 
-const ProfileCard = ({movie}) => {
+
+const ProfileCard = ({movie,type}) => {
 
     const dispatch = useDispatch();
     
@@ -14,12 +15,19 @@ const ProfileCard = ({movie}) => {
 
     
 
-    function handleRemove(moveId){ 
+    function handleRemove( msg,movieId){ 
+      if(msg==="fav")
+      {
+         dispatch(removeFavourite({userEmail:user.email,movieId}))  
 
-        dispatch(removeFavourite({userEmail:user.email,moveId}))  
+      }
+      else if(msg==="watchNext")
+         dispatch(removeWatchNext({userEmail:user.email,movieId}))
+      }
+
 
         
-}
+
 
 
   return (
@@ -37,13 +45,13 @@ const ProfileCard = ({movie}) => {
 
      </div>
      <button onClick={()=>{
-        handleRemove(movie.id)
+        handleRemove(type,movie.id)
      }} className='bg-red-500 font-bold h-xl w-20 text-white '>Remove</button>
    </div>
 
 </div>
    </>
   )
-}
 
+}
 export default ProfileCard

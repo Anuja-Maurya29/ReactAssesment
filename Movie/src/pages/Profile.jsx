@@ -8,12 +8,13 @@ import ProfileCard from "../components/ProfileCard";
 
 export default function Profile() {
   const user = useSelector((state) => state.auth.user);
-  // const favourite= JSON.parse(localStorage.getItem("favourite"))
 
-  // const favourite = useSelector((state)=>state.movies.favourite)
-  // const watchNext = useSelector((state)=>state.movies.watchNext)
-  const favourite = JSON.parse(localStorage.getItem("favourite"))
-  const watchNext = JSON.parse(localStorage.getItem("watchNext"))
+  // const favourite = JSON.parse(localStorage.getItem("favourite"))
+  // const watchNext = JSON.parse(localStorage.getItem("watchNext"))
+
+  const favourite = useSelector((state) => state.movies.favourite);
+const watchNext = useSelector((state) => state.movies.watchNext);
+
 
   const userwatchNext = watchNext[user.email]||[]
   const userFavourite = favourite[user.email] || []
@@ -43,7 +44,7 @@ export default function Profile() {
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {userFavourite.map((movie) => (
-            <ProfileCard key={movie.id} movie={movie}/>
+            <ProfileCard key={movie.id} movie={movie} type="fav"/>
             
           ))}
         </div>
@@ -57,7 +58,7 @@ export default function Profile() {
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {userwatchNext.map((movie) => (
-            <ProfileCard key={movie.id} movie={movie}/>
+            <ProfileCard key={movie.id} movie={movie} type="watchNext"/>
 
           ))}
         
