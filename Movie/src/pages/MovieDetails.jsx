@@ -34,7 +34,7 @@ export default function MovieDetails() {
     // const email = user.email
   
     dispatch(setFavourite({userEmail:user.email,movie}))
-  const MovieId = Number(id)
+  // const MovieId = Number(id)
 alert("added to favrouite");
 
 

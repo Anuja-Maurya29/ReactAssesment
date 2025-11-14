@@ -60,6 +60,7 @@ const moviesSlice = createSlice({
 
   if (!state.favourite[userEmail]) return;
 
+  
   state.favourite[userEmail] = state.favourite[userEmail].filter(
     (m) => m.id !== movieId
   );
@@ -68,18 +69,31 @@ const moviesSlice = createSlice({
 },
 
     setwatchNext: (state, action) => {
+
       const { userEmail, movie } = action.payload;
       if (!state.watchNext[userEmail]) {
         state.watchNext[userEmail] = [];
       }
-      state.watchNext[userEmail].push(movie);
+
+     const alreadyExistswatchNext = state.watchNext[userEmail].some(
+        (m) => m.id === movie.id
+      );
+      if(!alreadyExistswatchNext){
+
+        state.watchNext[userEmail].push(movie);
+      }
+
+      else{
+        return
+      }
+
       localStorage.setItem("watchNext", JSON.stringify(state.watchNext));
     },
 
 
 
 
-    removeWatchNext: (state, action) => {
+   removeWatchNext: (state, action) => {
   const { userEmail, movieId } = action.payload;
 
   if (!state.watchNext[userEmail]) return;

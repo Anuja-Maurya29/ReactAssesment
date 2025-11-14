@@ -8,6 +8,8 @@ import MovieDetails from "./MovieDetails";
 export default function Movies() {
   const dispatch = useDispatch();
 
+  
+
   //  selectors for movie category  and active list and loading state
   const movieLists = useSelector((state) => state.movies.movieLists);
   const activeCategory = useSelector((state) => state.movies.activeCategory);
